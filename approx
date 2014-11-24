@@ -1,0 +1,12 @@
+#16b
+
+#sin(x) from 0 to tau/4
+
+fact = lambda x: 1 if x == 0 else x * fact(x-1)
+
+approxSin = lambda x: x - x**3/factorial(3) - x**5/factorial(5) - x**7/factorial(7)
+
+fitMe = lambda x, a, b, c, d: x**0*a+x**1*b+x**2*c+x**3*d
+
+approxSin2 = lambda x: fitMe(x, *optimize.curve_fit(fitMe, linspace(0,pi/2), map(sin, linspace(0,pi/2)))[0])
+
